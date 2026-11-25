@@ -1,20 +1,15 @@
-"""The Internet in One Word - entry program.
+#!/usr/bin/env python3
+"""Entry point: write the one word that sums up the internet to /output/entry.txt."""
 
-The whole internet in a single word: feral. Wild, untamed, raised by
-itself. This program writes that word, and nothing else, to
-/output/entry.txt - exactly what the competition gate expects:
-UTF-8 text, 1 to 30 characters, not only white space.
-"""
-
-from pathlib import Path
-
-WORD = "feral"
+import os
 
 
-def main() -> None:
-    out = Path("/output/entry.txt")
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(WORD, encoding="utf-8")
+def main():
+    output_dir = "/output"
+    os.makedirs(output_dir, exist_ok=True)
+    output_path = os.path.join(output_dir, "entry.txt")
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write("feral")
 
 
 if __name__ == "__main__":
